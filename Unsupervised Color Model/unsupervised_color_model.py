@@ -1,4 +1,3 @@
-import os
 import cv2
 import numpy as np
 from google.colab.patches import cv2_imshow
@@ -42,7 +41,7 @@ def histogramR(rArray, height, width):
             else:
                 pOut = int((rArray[i][j] - img_min) * ((255 - img_min) / (img_max - img_min))) + img_min
                 arrayGlobalStretching[i][j] = pOut
-    return (arrayGlobalStretching)
+    return arrayGlobalStretching
 
 def histogramG(rArray, height, width):
     length = height * width
@@ -65,7 +64,7 @@ def histogramG(rArray, height, width):
             else:
                 pOut = int((rArray[i][j] - img_min) * ((255) / (img_max - img_min)) )
                 arrayGlobalStretching[i][j] = pOut
-    return (arrayGlobalStretching)
+    return arrayGlobalStretching
 
 def histogramB(rArray, height, width):
     length = height * width
@@ -86,7 +85,7 @@ def histogramB(rArray, height, width):
             else:
                 pOut = int((rArray[i][j] - img_min) * ((img_max) / (img_max - img_min)))
                 arrayGlobalStretching[i][j] = pOut
-    return (arrayGlobalStretching)
+    return arrayGlobalStretching
 
 def stretching(img):
     height = len(img)
@@ -106,7 +105,7 @@ def globalStretching(img_L, height, width):
             arrayGlobalStrecthingL[i][j] = pOut
     return arrayGlobalStrecthingL
 
-def HSVStretching(sceneUCM):
+def HSVstretching(sceneUCM):
     sceneUCM = np.uint8(sceneUCM)
     height = len(sceneUCM)
     width = len(sceneUCM[0])
@@ -130,7 +129,7 @@ img = cv2.imread("naziv_slike.ekstenzija")
 cv2_imshow(img)
 sceneUCM = RGBequalisation(img)
 sceneUCM = stretching(sceneUCM)
-sceneUCM = HSVStretching(sceneUCM)
+sceneUCM = HSVstretching(sceneUCM)
 sceneUCM = sceneRadianceRGB(sceneUCM)
 cv2_imshow(sceneUCM)
 

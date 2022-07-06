@@ -1,4 +1,3 @@
-import os
 import cv2
 import numpy as np
 from skimage.color import rgb2hsv,hsv2rgb
@@ -31,7 +30,7 @@ def globalStretching(img_L, height, width):
             arrayGlobalStretching[i][j] = pOut
     return arrayGlobalStretching
 
-def HSVStretching(sceneICM):
+def HSVstretching(sceneICM):
     height = len(sceneICM)
     width = len(sceneICM[0])
     img_hsv = rgb2hsv(sceneICM)
@@ -49,6 +48,6 @@ img = cv2.imread("naziv_slike.ekstenzija")
 cv2_imshow(img)
 img = stretching(img)
 sceneICM = sceneRadianceRGB(img)
-sceneICM = HSVStretching(sceneICM)
+sceneICM = HSVstretching(sceneICM)
 sceneICM = sceneRadianceRGB(sceneICM)
 cv2_imshow(sceneICM)
